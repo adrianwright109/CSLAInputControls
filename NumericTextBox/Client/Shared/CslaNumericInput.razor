@@ -1,0 +1,24 @@
+﻿@typeparam TModelProperty
+@inherits CslaNumericInputBase<TModelProperty>
+
+<div>
+    @if (ShowLabel)
+    {
+        <CslaLabel Property="Property" />
+    }
+    <TelerikNumericTextBox 
+        T="TModelProperty"
+        Id="@Property.PropertyName"
+        @bind-value="Value" 
+        @bind-value:event="@BindEvent"
+        Min="@Min"
+        Max="@Max"
+        Step="@Step"
+        Format="@Format"
+        Decimals="@Decimals"
+        Arrows="@Arrows"
+        Enabled="@Property.CanWrite"
+        Width="@Width"
+        Class="@Class" />
+    <CslaInputValidationMessages Property="Property" />
+</div>

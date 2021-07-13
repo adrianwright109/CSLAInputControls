@@ -1,0 +1,130 @@
+﻿@page "/"
+
+@if (!string.IsNullOrWhiteSpace(vm.ViewModelErrorText))
+{
+    <div class="alert alert-danger" role="alert">@vm.ViewModelErrorText</div>
+}
+
+@if (vm.Model == null)
+{
+    <p>Loading Settings...</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-2">
+            <label>Default Value</label>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <TelerikNumericTextBox 
+                    T="decimal?"
+                    Id="@nameof(vm.Model.DefaultTelerikNumericTextBox)"
+                    @bind-value="vm.Model.DefaultTelerikNumericTextBox" 
+                    @bind-value:event="@BindEvent"
+                    Min="@Min"
+                    Max="@Max"
+                    Step="@Step"
+                    Format="@Format"
+                    Decimals="@Decimals"
+                    Arrows="@Arrows"
+                    Enabled="@Enabled"
+                    Width="@Width"
+                    Class="@Class" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            Model Value:@vm.Model.DefaultTelerikNumericTextBox
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Standard Control</label>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <TelerikNumericTextBox 
+                    T="decimal?"
+                    Id="@nameof(vm.Model.StandardTelerikNumericTextBox)"
+                    @bind-value="vm.Model.StandardTelerikNumericTextBox" 
+                    @bind-value:event="@BindEvent"
+                    Min="@Min"
+                    Max="@Max"
+                    Step="@Step"
+                    Format="@Format"
+                    Decimals="@Decimals"
+                    Arrows="@Arrows"
+                    Enabled="@Enabled"
+                    Width="@Width"
+                    Class="@Class" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            Model Value:@vm.Model.StandardTelerikNumericTextBox
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <label>Custom Control</label>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <CslaNumericInput 
+                    TModelProperty="decimal?" 
+                    ShowLabel="false" 
+                    BindPropertyAndValidationOnInput="@BindPropertyAndValidationOnInput"
+                    Property="@(vm.GetPropertyInfo(() => vm.Model.CustomTelerikNumericTextBox))"
+                    Min="@Min" 
+                    Max="@Max" 
+                    Step="@Step" 
+                    Decimals="@Decimals" 
+                    Format="@Format"
+                    Width="@Width" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            Model Value:@vm.Model.CustomTelerikNumericTextBox
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <TelerikButton OnClick="@CopyValuesAcross">Copy Default Value to Standard and Custom Controls</TelerikButton>
+        </div>
+        <div class="col-md-2"></div>
+    </div>  
+}
+
+@code {
+    [Inject]
+    protected ViewModel<BusinessModel> vm { get; set; }
+
+    private string BindEvent => "onchange";
+    private bool BindPropertyAndValidationOnInput => false;
+
+    private bool? BoldCondition => false;
+    private decimal? Min => -999999m;
+    private decimal? Max => 999999m;
+    private int Step => 1;
+    private string Format => "N2";
+    private int Decimals => 2;
+    private bool Arrows => true;
+    private bool Enabled => true;
+    private string Width => "200px";
+    private string Class => BoldCondition.HasValue && BoldCondition.Value ? "bold" : null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await vm.RefreshAsync(() => Csla.DataPortal.CreateAsync<BusinessModel>());
+
+        await base.OnInitializedAsync();
+    }
+
+    protected void CopyValuesAcross(MouseEventArgs args)
+    {
+        vm.Model.StandardTelerikNumericTextBox = vm.Model.DefaultTelerikNumericTextBox;
+        vm.Model.CustomTelerikNumericTextBox = vm.Model.DefaultTelerikNumericTextBox;
+    }
+}

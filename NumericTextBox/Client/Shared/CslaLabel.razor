@@ -1,0 +1,14 @@
+﻿@inherits CslaInputBase
+
+@if (Property.CanRead)
+{
+    if (!PreFixExtraLabelText)
+    {
+        <label for="@Property.PropertyName" class="k-label k-form-label">@Property.FriendlyName @ExtraLabelText</label>
+    }
+    else
+    {
+        <label for="@Property.PropertyName" class="k-label k-form-label">@ExtraLabelText @Property.FriendlyName</label>
+    }
+    
+}
