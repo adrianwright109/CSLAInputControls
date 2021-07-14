@@ -1,0 +1,26 @@
+﻿@typeparam TDataItem
+@typeparam TModelProperty
+@inherits CslaDropDownBase<TDataItem, TModelProperty>
+
+<div>
+    @if (Data != null)
+    {
+        if (ShowLabel)
+        {
+            <CslaLabel Property="Property"/>
+        }
+        <TelerikDropDownList
+            TItem="TDataItem"
+            TValue="TModelProperty"
+            Data="@Data"
+            DefaultText="@DefaultText"
+            Id="@Property.PropertyName"
+            Width="@Width"
+            @bind-Value="@Value"
+            ValueField="@ValueField"
+            TextField="@TextField"
+            Enabled="@(Enabled && Property.CanWrite)">
+        </TelerikDropDownList>
+        <CslaInputValidationMessages Property="Property"/>
+    }
+</div>

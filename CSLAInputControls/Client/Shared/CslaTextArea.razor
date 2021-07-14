@@ -1,0 +1,15 @@
+﻿@inherits CslaTextInputBase
+
+<div>
+    @if (ShowLabel)
+    {
+        <CslaLabel Property="Property" />
+    }
+    <TelerikTextArea Id="@Property.PropertyName"
+                    Name="@Property.PropertyName"
+                    @bind-Value="Value"
+                    @bind-Value:event="@BindEvent"
+                    Width="@Width"
+                    Enabled="@Property.CanWrite" />
+    <CslaInputValidationMessages Property="Property" />
+</div>

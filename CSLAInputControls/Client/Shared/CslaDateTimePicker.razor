@@ -1,0 +1,19 @@
+﻿@typeparam TModelProperty
+@inherits CslaDateTimePickerBase<TModelProperty>
+
+<div>
+    @if (ShowLabel)
+    {
+        <CslaLabel Property="Property" />
+    }
+    <TelerikDateTimePicker 
+        T="TModelProperty"
+        Id="@Property.PropertyName"
+        @bind-Value="Value" 
+        Min="@Min"
+        Max="@Max"
+        Format="@Format"
+        Width="@Width"
+        Enabled="@Property.CanWrite" />
+    <CslaInputValidationMessages Property="Property" />
+</div>

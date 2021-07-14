@@ -1,0 +1,12 @@
+﻿@typeparam TModelProperty
+@inherits CslaSwitchBase<TModelProperty>
+
+<div style="display:inline-block">
+    <TelerikSwitch TValue="TModelProperty" 
+                       @bind-Value="@Value" 
+                       OnLabel="@OnLabel" 
+                       OffLabel="@OffLabel"
+                       Width="@Width"
+                       Enabled="@Property.CanWrite" />
+    <CslaInputValidationMessages Property="Property" />
+</div>
