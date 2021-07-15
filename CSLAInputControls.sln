@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.223
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSLAInputControls.Server", "CSLAInputControls\Server\CSLAInputControls.Server.csproj", "{775C40E3-B768-408E-9E4B-647839EF73DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSLAInputControls.Server", "CSLAInputControls\Server\CSLAInputControls.Server.csproj", "{775C40E3-B768-408E-9E4B-647839EF73DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSLAInputControls.Client", "CSLAInputControls\Client\CSLAInputControls.Client.csproj", "{EEE362BE-E40C-4192-92A0-DFC83F01EE38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSLAInputControls.Client", "CSLAInputControls\Client\CSLAInputControls.Client.csproj", "{EEE362BE-E40C-4192-92A0-DFC83F01EE38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSLAInputControls.Shared", "CSLAInputControls\Shared\CSLAInputControls.Shared.csproj", "{8CE3C451-A56E-4218-8CEE-B2C723A43AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSLAInputControls.Shared", "CSLAInputControls\Shared\CSLAInputControls.Shared.csproj", "{8CE3C451-A56E-4218-8CEE-B2C723A43AD6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSLAInputControls.Common", "CSLAInputControls\Common\CSLAInputControls.Common.csproj", "{8EC94F12-2107-46F6-A809-7B2A67C4E465}"
 EndProject
