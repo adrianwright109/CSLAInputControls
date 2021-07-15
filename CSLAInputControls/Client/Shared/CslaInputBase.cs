@@ -19,11 +19,14 @@ namespace MB5.Client.Shared
             get => (TPropertyValueType)Property.Value;
             set
             {
-                if (Property.Value != (object)value)
+                if (Property.Value == (object)value)
                 {
-                    Property.Value = value;
-                    PropertyChanged.InvokeAsync(value);
+                    //value not changed
+                    return;
                 }
+
+                Property.Value = value;
+                PropertyChanged.InvokeAsync(value);
             }
         }
 
