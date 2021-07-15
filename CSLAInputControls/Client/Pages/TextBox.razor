@@ -1,4 +1,5 @@
 ﻿@page "/TextBox"
+@implements IDisposable
 
 @if (!string.IsNullOrWhiteSpace(vm.ViewModelErrorText))
 {
@@ -139,6 +140,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         await vm.RefreshAsync(() => Csla.DataPortal.CreateAsync<BusinessModel>());
+        vm.ModelPropertyChanged += async (s, e) => await OnModelPropertyChanged();
 
         await base.OnInitializedAsync();
     }
@@ -147,5 +149,15 @@ else
     {
         vm.Model.StandardTelerikTextBox = vm.Model.DefaultTelerikTextBox;
         vm.Model.CustomTelerikTextBox = vm.Model.DefaultTelerikTextBox;
+    }
+
+    private async Task OnModelPropertyChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        vm.ModelPropertyChanged -= async (s, e) => await OnModelPropertyChanged();
     }
 }

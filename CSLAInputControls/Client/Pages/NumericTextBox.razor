@@ -1,4 +1,5 @@
 ﻿@page "/NumericTextBox"
+@implements IDisposable
 
 @if (!string.IsNullOrWhiteSpace(vm.ViewModelErrorText))
 {
@@ -92,7 +93,7 @@ else
         <div class="col-md-2">
             <div class="form-group">
                 <CslaNumericInput 
-                    TModelProperty="decimal?" 
+                    TPropertyValueType="decimal?" 
                     ShowLabel="false" 
                     BindPropertyAndValidationOnInput="@BindPropertyAndValidationOnInput"
                     Property="@(vm.GetPropertyInfo(() => vm.Model.CustomTelerikNumericTextBox))"
@@ -158,6 +159,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         await vm.RefreshAsync(() => Csla.DataPortal.CreateAsync<BusinessModel>());
+        vm.ModelPropertyChanged += async (s, e) => await OnModelPropertyChanged();
 
         await base.OnInitializedAsync();
     }
@@ -166,5 +168,15 @@ else
     {
         vm.Model.StandardTelerikNumericTextBox = vm.Model.DefaultTelerikNumericTextBox;
         vm.Model.CustomTelerikNumericTextBox = vm.Model.DefaultTelerikNumericTextBox;
+    }
+
+    private async Task OnModelPropertyChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        vm.ModelPropertyChanged -= async (s, e) => await OnModelPropertyChanged();
     }
 }
