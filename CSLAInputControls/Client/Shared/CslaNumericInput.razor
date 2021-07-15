@@ -1,5 +1,5 @@
-﻿@typeparam TModelProperty
-@inherits CslaNumericInputBase<TModelProperty>
+﻿@typeparam TPropertyValueType
+@inherits CslaNumericInputBase<TPropertyValueType>
 
 <div>
     @if (ShowLabel)
@@ -7,9 +7,9 @@
         <CslaLabel Property="Property" />
     }
     <TelerikNumericTextBox 
-        T="TModelProperty"
+        T="TPropertyValueType"
         Id="@Property.PropertyName"
-        @bind-Value="Value" 
+        @bind-Value="BoundValue" 
         @bind-Value:event="@BindEvent"
         Min="@Min"
         Max="@Max"

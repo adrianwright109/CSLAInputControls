@@ -1,9 +1,9 @@
-﻿@typeparam TModelProperty
-@inherits CslaSwitchBase<TModelProperty>
+﻿@typeparam TPropertyValueType
+@inherits CslaSwitchBase<TPropertyValueType>
 
 <div style="display:inline-block">
-    <TelerikSwitch TValue="TModelProperty" 
-                       @bind-Value="@Value" 
+    <TelerikSwitch TValue="TPropertyValueType" 
+                       @bind-Value="@BoundValue" 
                        OnLabel="@OnLabel" 
                        OffLabel="@OffLabel"
                        Width="@Width"

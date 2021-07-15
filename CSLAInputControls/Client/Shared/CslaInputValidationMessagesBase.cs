@@ -1,6 +1,6 @@
 ﻿namespace MB5.Client.Shared
 {
-    public class CslaInputValidationMessagesBase : CslaInputBase
+    public class CslaInputValidationMessagesBase : CslaHtmlElementBase
     {
     }
 }

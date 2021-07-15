@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MB5.Client.Shared
 {
-    public class CslaDatePickerBase<TModelProperty> : CslaDateAndDateTimePickerBase<TModelProperty>
+    public class CslaDatePickerBase<TPropertyValueType> : CslaDateAndDateTimePickerBase<TPropertyValueType>
     {
         [Parameter]
         public override string Format { get; set; } = Constants.DefaultDateFormat;

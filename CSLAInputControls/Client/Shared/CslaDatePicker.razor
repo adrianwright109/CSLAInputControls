@@ -1,5 +1,5 @@
-﻿@typeparam TModelProperty
-@inherits CslaDatePickerBase<TModelProperty>
+﻿@typeparam TPropertyValueType
+@inherits CslaDatePickerBase<TPropertyValueType>
 
 <div>
     @if (ShowLabel)
@@ -7,9 +7,9 @@
         <CslaLabel Property="Property" />
     }
     <TelerikDatePicker 
-        T="TModelProperty"
+        T="TPropertyValueType"
         Id="@Property.PropertyName"
-        @bind-Value="Value" 
+        @bind-Value="BoundValue" 
         Min="@Min"
         Max="@Max"
         Format="@Format"

@@ -1,4 +1,4 @@
-﻿@inherits CslaInputBase
+﻿@inherits CslaHtmlElementBase
 
 @if (Property.CanRead)
 {
@@ -10,5 +10,4 @@
     {
         <label for="@Property.PropertyName" class="k-label k-form-label">@ExtraLabelText @Property.FriendlyName</label>
     }
-    
 }

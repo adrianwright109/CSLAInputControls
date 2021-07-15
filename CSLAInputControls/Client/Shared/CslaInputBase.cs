@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MB5.Client.Shared
 {
-    public class CslaInputBase : ComponentBase
+    public class CslaInputBase<TPropertyValueType> : CslaHtmlElementBase
     {
         private const string OnInputEventName = "oninput";
         private const string OnChangeEventName = "onchange";
@@ -12,7 +12,20 @@ namespace MB5.Client.Shared
         protected string BindEvent = OnInputEventName;
 
         [Parameter]
-        public IPropertyInfo Property { get; set; }
+        public EventCallback<TPropertyValueType> PropertyChanged { get; set; }
+
+        protected TPropertyValueType BoundValue
+        {
+            get => (TPropertyValueType)Property.Value;
+            set
+            {
+                if (Property.Value != (object)value)
+                {
+                    Property.Value = value;
+                    PropertyChanged.InvokeAsync(value);
+                }
+            }
+        }
 
         [Parameter]
         public bool BindPropertyAndValidationOnInput
@@ -29,12 +42,6 @@ namespace MB5.Client.Shared
         public bool ShowLabel { get; set; } = true;
 
         [Parameter]
-        public string ExtraLabelText { get; set; } = "";
-
-        [Parameter]
-        public bool PreFixExtraLabelText { get; set; }
-
-        [Parameter]
-        public virtual string Format { get; set; }
+        public virtual string Width { get; set; } = "100%";
     }
 }

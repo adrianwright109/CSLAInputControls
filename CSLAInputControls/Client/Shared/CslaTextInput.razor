@@ -8,7 +8,7 @@
     <TelerikTextBox 
         Id="@Property.PropertyName" 
         Name="@Property.PropertyName"
-        @bind-Value="Value" 
+        @bind-Value="BoundValue" 
         @bind-Value:event="@BindEvent"
         InputMode="@InputType"
         Password="@IsPassword"
@@ -16,47 +16,3 @@
         Width="@Width"/>
     <CslaInputValidationMessages Property="Property" />
 </div>
-
-@code {
-    private string _defaultPasswordInput = "password";
-    private string _inputMode = "text";
-    private bool _isPassword = false;
-
-    [Parameter]
-    public string InputType
-    {
-        get => _inputMode;
-        set
-        {
-            if (value == _defaultPasswordInput)
-            {
-                _inputMode = value;
-                _isPassword = true;
-            }
-            else
-            {
-                _inputMode = value;
-                _isPassword = false;
-            }
-        }
-    }
-
-    [Parameter]
-    public bool IsPassword
-    {
-        get => _isPassword;
-        set
-        {
-            if (value)
-            {
-                _isPassword = true;
-                _inputMode = _defaultPasswordInput;
-            }
-            else
-            {
-                _isPassword = false;
-            }
-        }
-    }
-
-}

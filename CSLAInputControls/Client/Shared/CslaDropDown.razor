@@ -1,6 +1,6 @@
 ﻿@typeparam TDataItem
-@typeparam TModelProperty
-@inherits CslaDropDownBase<TDataItem, TModelProperty>
+@typeparam TPropertyValueType
+@inherits CslaDropDownBase<TDataItem, TPropertyValueType>
 
 <div>
     @if (Data != null)
@@ -11,12 +11,12 @@
         }
         <TelerikDropDownList
             TItem="TDataItem"
-            TValue="TModelProperty"
+            TValue="TPropertyValueType"
             Data="@Data"
             DefaultText="@DefaultText"
             Id="@Property.PropertyName"
             Width="@Width"
-            @bind-Value="@Value"
+            @bind-Value="@BoundValue"
             ValueField="@ValueField"
             TextField="@TextField"
             Enabled="@(Enabled && Property.CanWrite)">

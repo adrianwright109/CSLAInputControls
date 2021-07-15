@@ -2,15 +2,47 @@
 
 namespace MB5.Client.Shared
 {
-    public class CslaTextInputBase : CslaInputBase
+    public class CslaTextInputBase : CslaInputBase<string>
     {
-        [Parameter]
-        public string Width { get; set; } = "100%";
+        private const string DefaultPasswordInput = "password";
+        private string _inputMode = "text";
+        private bool _isPassword;
 
-        protected string Value
+        [Parameter]
+        public string InputType
         {
-            get => (string)Property.Value;
-            set => Property.Value = value;
+            get => _inputMode;
+            set
+            {
+                if (value == DefaultPasswordInput)
+                {
+                    _inputMode = value;
+                    _isPassword = true;
+                }
+                else
+                {
+                    _inputMode = value;
+                    _isPassword = false;
+                }
+            }
+        }
+
+        [Parameter]
+        public bool IsPassword
+        {
+            get => _isPassword;
+            set
+            {
+                if (value)
+                {
+                    _isPassword = true;
+                    _inputMode = DefaultPasswordInput;
+                }
+                else
+                {
+                    _isPassword = false;
+                }
+            }
         }
     }
 }
