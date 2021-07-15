@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 using ServiceStack;
 
-namespace CSLAInputControls.Common.Extensions
+namespace MB5.Common.Extensions
 {
     public static class EnumDisplayNameExtensions
     {

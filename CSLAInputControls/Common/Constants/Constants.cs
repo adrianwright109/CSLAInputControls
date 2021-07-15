@@ -1,4 +1,4 @@
-﻿namespace CSLAInputControls.Common.Constants
+﻿namespace MB5.Common.Constants
 {
     public static class Constants
     {

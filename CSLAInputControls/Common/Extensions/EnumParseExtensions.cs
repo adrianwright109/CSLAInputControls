@@ -6,7 +6,7 @@ using System.Reflection;
 using CSLAInputControls.Common.Attributes;
 using CSLAInputControls.Common.DTOs;
 
-namespace CSLAInputControls.Common.Extensions
+namespace MB5.Common.Extensions
 {
     public static class EnumParseExtensions
     {

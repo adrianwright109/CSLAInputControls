@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components;
-using Constants = CSLAInputControls.Common.Constants.Constants;
+﻿using MB5.Common.Constants;
+using Microsoft.AspNetCore.Components;
 
-namespace CSLAInputControls.Client.Shared
+namespace MB5.Client.Shared
 {
     public class CslaDatePickerBase<TModelProperty> : CslaDateAndDateTimePickerBase<TModelProperty>
     {

@@ -1,4 +1,4 @@
-﻿namespace CSLAInputControls.Client.Shared
+﻿namespace MB5.Client.Shared
 {
     public class CslaInputValidationMessagesBase : CslaInputBase
     {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using ServiceStack;
 
-namespace CSLAInputControls.Client.Shared
+namespace MB5.Client.Shared
 {
     public class CslaDropDownBase<TDataItem, TModelProperty> : CslaInputBase
     {
